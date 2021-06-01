@@ -1,0 +1,14 @@
+Foi realizado levantamento de um processo que, se for automatizado, irá liberar 4 horas diárias de um executor. Porém para isso, precisamos que seja criado um robô e não temos ninguém na equipe capaz de fazê-lo.
+
+O processo consiste em, com base em uma planilha Excel, enviar e-mail aos participantes que se enquadrem nos requisitos. Diariamente é gerado uma planilha pelo sistema, contendo entre 500 e 800 participantes.
+Para o envio, deve-se observar alguns pontos:
+
+- O comunicado deve ser realizado apenas para participantes com valor de contribuição superior a 100 reais. Para os demais, o status deve ser definido como "NÃO ENVIAR";
+- Utilizando a planilha recebida, deve ser adicionado duas colunas, para controle interno, contendo a data de processamento e o status do envio aos participantes;
+- Alguns participantes não possuem e-mail. Para esses casos o robô deve definir o status como "FALHA - Sem e-mail";
+- Alguns participantes podem também ter e-mails que são inválidos, como não respeitarem o formato padrão (abc@def.com). Estes devem assumir o status "FALHA - E-mail inválido";
+- Para os participantes que forem comunicados, o status deve ser definido como "SUCESSO";
+- Caso ocorra falha na execução do robô devido algum problema adverso (queda de internet, falha no servidor de e-mail, etc.), o status deve ser "FALHA - Erro interno" e o robô deve seguir o processamento.
+- A planilha utilizada para desenvolvimento e testes conterá apenas alguns poucos registros, mas mesmo assim não deve ser enviado nenhum e-mail aos participantes em um primeiro momento;
+- O e-mail a ser enviado deve ser em HTML, utilizando modelo já criado, e deve conter o primeiro nome do participante no corpo do e-mail, onde encontra-se a variável %nome%;
+- O template utilizado para o envio deve ser conforme o Plano do participante. Se for plano PRECAVER, deve-se utilizar o modelo "TemplateEmailPrecaver.txt", caso contrário, "TemplateEmailPrevcoop.txt".
